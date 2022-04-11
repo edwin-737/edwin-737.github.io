@@ -10,16 +10,22 @@
 
   <script>
     function initCells() {
-      for (let i = 0; i < 100; i++) {
-        curButton = document.createElement("button");
-        curButton.setAttribute("class", "cell1");
-        let topV = 80 + 20 * Math.floor(i / 10);
-        curButton.style.top = topV.toString() + "px";
-        let leftV = 100 + 20 * (i % 10);
-        curButton.style.left = leftV.toString() + "px";
-        curButtonID = "c" + i.toString();
-        curButton.setAttribute("id", curButtonID);
-        document.body.appendChild(curButton);
+      for (let row = 0; row < 10; row++) {
+        let topV = 80 + 20 * row;
+        for (let col = 0; col < 10; col++) {
+          curButton = document.createElement("button");
+          curButton.setAttribute("class", "cell1");
+          curButton.style.top = topV.toString() + "px";
+          let leftV = 100 + 20 * col;
+          curButton.style.left = leftV.toString() + "px";
+          curButtonID_int = row * 10 + col;
+          if (row % 2 == 1) {
+            curButtonID_int = row * 10 + (9 - col);
+          }
+          curButtonID_str = curButtonID_int.toString();
+          curButton.setAttribute("id", curButtonID_str);
+          document.body.appendChild(curButton);
+        }
       }
     }
   </script>
@@ -124,13 +130,13 @@
           activeColour = [204, 102, 0];
         } else if (colour == o5) {
           activeColour = [255, 128, 0];
-        } else if (colour == o6) {
+        } else if (colo1ur == o6) {
           activeColour = [255, 153, 51];
         }
       }
       function Init() {
         for (let i = 0; i < 100; i++) {
-          final[i] = [0,0,0];
+          final[i] = [153, 76, 0];
           let chosenKey = i.toString();
           update(ref(db), {
             [chosenKey]: final[i],
@@ -145,7 +151,7 @@
       }
       function whichCellClicked() {
         for (let i = 0; i < 100; i++) {
-          let cur_id = "c" + i.toString();
+          let cur_id = i.toString();
           let cur_button = document.getElementById(cur_id);
           cur_button.onclick = function () {
             final[i] = activeColour;
@@ -190,8 +196,8 @@
         chooseColour(o6);
       };
       reset.onclick = function () {
-        Init();
         whichCellClicked();
+        Init();
       };
     </script>
   </body>
