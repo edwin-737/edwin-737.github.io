@@ -11,12 +11,12 @@
   <script>
     function initCells() {
       for (let row = 0; row < 10; row++) {
-        let topV = 100 + (20 * row);
+        let topV = 280 - (20 * row);
         for (let col = 0; col < 10; col++) {
           curButton = document.createElement("button");
           curButton.setAttribute("class", "cell1");
           curButton.style.top = topV.toString() + "px";
-          let leftV = 280 - (20 * col);
+          let leftV = 100 + (20 * col);
           curButton.style.left = leftV.toString() + "px";
           curButtonID_int = row * 10 + col;
           if (row % 2 == 1) {
