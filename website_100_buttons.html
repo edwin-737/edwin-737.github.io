@@ -18,9 +18,9 @@
           curButton.style.top = topV.toString() + "px";
           let leftV = 100 + 20 * col;
           curButton.style.left = leftV.toString() + "px";
-          curButtonID_int = (9-row) * 10 + col;
+          curButtonID_int = row * 10 + col;
           if (row % 2 == 1) {
-            curButtonID_int = (9-row)* 10 + (9 - col);
+            curButtonID_int = row* 10 + (9 - col);
           }
           curButtonID_str = curButtonID_int.toString();
           curButton.setAttribute("id", curButtonID_str);
