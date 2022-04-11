@@ -11,7 +11,7 @@
   <script>
     function initCells() {
       for (let row = 9; row >= 0; row--) {
-        let topV = 80+ 20 * (9 - row);
+        let topV = 80 + (20 * (9 - row));
         for (let col = 0; col < 10; col++) {
           curButton = document.createElement("button");
           curButton.setAttribute("class", "cell1");
