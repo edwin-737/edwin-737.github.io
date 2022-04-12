@@ -11,7 +11,7 @@
   <script>
     function initCells() {
       for (let row = 9; row >= 0; row--) {
-        let topV = 80 + (20 * (9 - row));
+        let topV = 80 + 20 * (9 - row);
         for (let col = 0; col < 10; col++) {
           curButton = document.createElement("button");
           curButton.setAttribute("class", "cell1");
@@ -27,20 +27,20 @@
           document.body.appendChild(curButton);
         }
       }
-      for (let col = 0; col < 10; col++) {
-        curButton = document.createElement("button");
-        curButton.setAttribute("class", "cell1");
-        curButton.style.top = topV.toString() + "px";
-        let leftV = 100 + 20 * col;
-        curButton.style.left = leftV.toString() + "px";
-        curButtonID_int = row * 10 + col;
-        if (row % 2 == 1) {
-          curButtonID_int = row * 10 + (9 - col);
-        }
-        curButtonID_str = curButtonID_int.toString();
-        curButton.setAttribute("id", curButtonID_str);
-        document.body.appendChild(curButton);
-      }
+      // for (let col = 0; col < 10; col++) {
+      //   curButton = document.createElement("button");
+      //   curButton.setAttribute("class", "cell1");
+      //   curButton.style.top = topV.toString() + "px";
+      //   let leftV = 100 + 20 * col;
+      //   curButton.style.left = leftV.toString() + "px";
+      //   curButtonID_int = row * 10 + col;
+      //   if (row % 2 == 1) {
+      //     curButtonID_int = row * 10 + (9 - col);
+      //   }
+      //   curButtonID_str = curButtonID_int.toString();
+      //   curButton.setAttribute("id", curButtonID_str);
+      //   document.body.appendChild(curButton);
+      // }
     }
   </script>
   <body onload="initCells();">
@@ -69,6 +69,7 @@
     <button id="orange4" class="orange4"></button>
     <button id="orange5" class="orange5"></button>
     <button id="orange6" class="orange6"></button>
+    <button id="heart" class="heart">heart</button>
     <!--imports/configuration-->
     <script type="module">
       // Import the functions you need from the SDKs you need
@@ -119,8 +120,8 @@
         o4 = document.getElementById("orange4"),
         o5 = document.getElementById("orange5"),
         o6 = document.getElementById("orange6"),
-        reset = document.getElementById("reset");
-
+        reset = document.getElementById("reset"),
+        heart = document.getElementById("heart");
       function chooseColour(colour) {
         if (colour == r1) {
           activeColour = [102, 0, 0];
@@ -212,6 +213,17 @@
       reset.onclick = function () {
         whichCellClicked();
         Init();
+      };
+      heart.onclick = function () {
+        let listDarkRed = [
+          12, 13, 16, 17, 21, 24, 25, 28, 30, 39, 40, 49, 51, 58, 62, 67, 73,
+          76, 84, 85,
+        ];
+        activeColour = [102, 0, 0];
+        for (var i = 0; i < listDarkRed.length; i++) {
+          final[listDarkRed[i]] = activeColour;
+          applyToCells(listDarkRed[i]);
+        }
       };
     </script>
   </body>
