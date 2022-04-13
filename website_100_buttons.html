@@ -10,7 +10,14 @@
 
   <script>
     function initCells() {
-      let colourStrings = ["red", "orange", "yellow", "green", "turkoise"];
+      let colourStrings = [
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "turkoise",
+        "blue",
+      ];
       for (let row = 9; row >= 0; row--) {
         let topV = 80 + 20 * (9 - row);
         for (let col = 0; col < 10; col++) {
@@ -28,7 +35,7 @@
           document.body.appendChild(curButton);
         }
       }
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 6; i++) {
         let leftV = 10 + 20 * i;
         for (let j = 1; j < 7; j++) {
           let curButton = document.createElement("button");
@@ -45,7 +52,7 @@
   </script>
   <body onload="initCells();">
     <button id="reset" class="reset">reset</button>
-    <button id="heart" class="heart">heart</button>;
+    <button id="heart" class="heart">heart</button>
     <p>
       Hello visitor!
       <br />
@@ -122,7 +129,14 @@
         }
       }
       function whichColourClicked() {
-        let colourStrings = ["red", "orange", "yellow", "green", "turkoise"];
+        let colourStrings = [
+          "red",
+          "orange",
+          "yellow",
+          "green",
+          "turkoise",
+          "blue",
+        ];
         for (let i = 0; i < colourStrings.length; i++) {
           for (let j = 1; j < 7; j++) {
             let cur_id = colourStrings[i] + j.toString();
