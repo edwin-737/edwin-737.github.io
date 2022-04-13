@@ -379,11 +379,11 @@
   left: 110px;
 }
 .cell1 {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
   width: 10px;
   height: 15px;
   border: 1px solid, rgb(0, 0, 0);
-  padding: 1px solid, rgb(255, 255, 255);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 80px;
   left: 120px;
