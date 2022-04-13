@@ -10,15 +10,16 @@
 
   <script>
     function initCells() {
+      let colourStrings = ["red", "orange", "yellow", "green", "turkoise"];
       for (let row = 9; row >= 0; row--) {
         let topV = 80 + 20 * (9 - row);
         for (let col = 0; col < 10; col++) {
-          curButton = document.createElement("button");
+          let curButton = document.createElement("button");
           curButton.setAttribute("class", "cell1");
           curButton.style.top = topV.toString() + "px";
-          let leftV = 100 + 20 * col;
+          let leftV = 140 + 20 * col;
           curButton.style.left = leftV.toString() + "px";
-          curButtonID_int = row * 10 + col;
+          let curButtonID_int = row * 10 + col;
           if (row % 2 == 1) {
             curButtonID_int = row * 10 + (9 - col);
           }
@@ -27,23 +28,23 @@
           document.body.appendChild(curButton);
         }
       }
-      // for (let col = 0; col < 10; col++) {
-      //   curButton = document.createElement("button");
-      //   curButton.setAttribute("class", "cell1");
-      //   curButton.style.top = topV.toString() + "px";
-      //   let leftV = 100 + 20 * col;
-      //   curButton.style.left = leftV.toString() + "px";
-      //   curButtonID_int = row * 10 + col;
-      //   if (row % 2 == 1) {
-      //     curButtonID_int = row * 10 + (9 - col);
-      //   }
-      //   curButtonID_str = curButtonID_int.toString();
-      //   curButton.setAttribute("id", curButtonID_str);
-      //   document.body.appendChild(curButton);
-      // }
+      for (let i = 0; i < 5; i++) {
+        let leftV = 10 + 20 * i;
+        for (let j = 1; j < 7; j++) {
+          let curButton = document.createElement("button");
+          curButton.style.left = leftV.toString() + "px";
+          let topV = 60 + 20 * j;
+          curButton.style.top = topV.toString() + "px";
+          let curColourID = colourStrings[i] + j.toString();
+          curButton.setAttribute("class", curColourID);
+          curButton.setAttribute("id", curColourID);
+          document.body.appendChild(curButton);
+        }
+      }
     }
   </script>
   <body onload="initCells();">
+    <button id="reset" class="reset">reset</button>
     <p>
       Hello visitor!
       <br />
@@ -56,20 +57,6 @@
       <br />
       ->to turn the lights off, click reset.
     </p>
-    <button id="reset" class="reset">reset</button>
-    <button id="red1" class="red1"></button>
-    <button id="red2" class="red2"></button>
-    <button id="red3" class="red3"></button>
-    <button id="red4" class="red4"></button>
-    <button id="red5" class="red5"></button>
-    <button id="red6" class="red6"></button>
-    <button id="orange1" class="orange1"></button>
-    <button id="orange2" class="orange2"></button>
-    <button id="orange3" class="orange3"></button>
-    <button id="orange4" class="orange4"></button>
-    <button id="orange5" class="orange5"></button>
-    <button id="orange6" class="orange6"></button>
-    <button id="heart" class="heart">heart</button>
     <!--imports/configuration-->
     <script type="module">
       // Import the functions you need from the SDKs you need
@@ -108,47 +95,6 @@
       for (let i = 0; i < 99; i++) {
         final.push([0, 0, 0]);
       }
-      var r1 = document.getElementById("red1"),
-        r2 = document.getElementById("red2"),
-        r3 = document.getElementById("red3"),
-        r4 = document.getElementById("red4"),
-        r5 = document.getElementById("red5"),
-        r6 = document.getElementById("red6"),
-        o1 = document.getElementById("orange1"),
-        o2 = document.getElementById("orange2"),
-        o3 = document.getElementById("orange3"),
-        o4 = document.getElementById("orange4"),
-        o5 = document.getElementById("orange5"),
-        o6 = document.getElementById("orange6"),
-        reset = document.getElementById("reset"),
-        heart = document.getElementById("heart");
-      function chooseColour(colour) {
-        if (colour == r1) {
-          activeColour = [102, 0, 0];
-        } else if (colour == r2) {
-          activeColour = [153, 0, 0];
-        } else if (colour == r3) {
-          activeColour = [204, 0, 0];
-        } else if (colour == r4) {
-          activeColour = [255, 0, 0];
-        } else if (colour == r5) {
-          activeColour = [255, 51, 51];
-        } else if (colour == r6) {
-          activeColour = [255, 102, 102];
-        } else if (colour == o1) {
-          activeColour = [51, 25, 0];
-        } else if (colour == o2) {
-          activeColour = [102, 51, 0];
-        } else if (colour == o3) {
-          activeColour = [153, 76, 0];
-        } else if (colour == o4) {
-          activeColour = [204, 102, 0];
-        } else if (colour == o5) {
-          activeColour = [255, 128, 0];
-        } else if (colo1ur == o6) {
-          activeColour = [255, 153, 51];
-        }
-      }
       function Init() {
         for (let i = 0; i < 100; i++) {
           final[i] = [20, 0, 0];
@@ -174,56 +120,46 @@
           };
         }
       }
-      r1.onclick = function () {
-        chooseColour(r1);
-      };
-      r2.onclick = function () {
-        chooseColour(r2);
-      };
-      r3.onclick = function () {
-        chooseColour(r3);
-      };
-      r4.onclick = function () {
-        chooseColour(r4);
-      };
-      r5.onclick = function () {
-        chooseColour(r5);
-      };
-      r6.onclick = function () {
-        chooseColour(r6);
-      };
-      o1.onclick = function () {
-        chooseColour(o1);
-      };
-      o2.onclick = function () {
-        chooseColour(o2);
-      };
-      o3.onclick = function () {
-        chooseColour(o3);
-      };
-      o4.onclick = function () {
-        chooseColour(o4);
-      };
-      o5.onclick = function () {
-        chooseColour(o5);
-      };
-      o6.onclick = function () {
-        chooseColour(o6);
-      };
-      reset.onclick = function () {
-        whichCellClicked();
-        Init();
-      };
-      heart.onclick = function () {
-        let listDarkRed = [
-          12, 13, 16, 17, 21, 24, 25, 28, 30, 39, 40, 49, 51, 58, 62, 67, 73,
-          76, 84, 85,
-        ];
-        activeColour = [102, 0, 0];
-        for (var i = 0; i < listDarkRed.length; i++) {
-          final[listDarkRed[i]] = activeColour;
-          applyToCells(listDarkRed[i]);
+      function whichColourClicked() {
+        let colourStrings = ["red", "orange", "yellow", "green", "turkoise"];
+        for (let i = 0; i < colourStrings.length; i++) {
+          for (let j = 1; j < 7; j++) {
+            let cur_id = colourStrings[i] + j.toString();
+            let cur_button = document.getElementById(cur_id);
+            cur_button.onclick = function () {
+              var cur_ind = 0;
+              var cur_color =
+                window.getComputedStyle(cur_button).backgroundColor;
+              console.log(cur_color);
+              activeColour = [0, 0, 0];
+              let tens = 0;
+              for (let i = 0; i < cur_color.length; i++) {
+                if (cur_color[i] >= "0" && cur_color[i] <= "9") {
+                  console.log("dd");
+                  let j = i;
+                  console.log(i, j);
+                  let digits = 0;
+                  while (cur_color[j] >= "0" && cur_color[j] <= "9") {
+                    j++;
+                  }
+                  let cur_num = cur_color.substring(i, j);
+                  activeColour[cur_ind] = Number(cur_num) / 2;
+                  console.log(i, j);
+                  console.log(activeColour[cur_ind]);
+                  i = j + 1;
+                  cur_ind++;
+                }
+              }
+              console.log(activeColour);
+            };
+          }
         }
+      }
+      var res = document.getElementById("reset");
+      res.onclick = function () {
+        whichCellClicked();
+        whichColourClicked();
+        Init();
       };
     </script>
   </body>
