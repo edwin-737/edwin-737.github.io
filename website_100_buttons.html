@@ -143,7 +143,7 @@
                     j++;
                   }
                   let cur_num = cur_color.substring(i, j);
-                  activeColour[cur_ind] = Number(cur_num) / 2;
+                  activeColour[cur_ind] = Math.floor(Number(cur_num) / 2);
                   console.log(i, j);
                   console.log(activeColour[cur_ind]);
                   i = j + 1;
