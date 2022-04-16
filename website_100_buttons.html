@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="buttonlist_v2.css" />
+    <link rel="stylesheet" href="buttonlist_v3.css" />
     <title>Read, Write, Update, Delete data firebase</title>
   </head>
 
   <script>
     function initCells() {
-      let colourStrings = ["red", "orange", "yellow", "green", "turkoise"];
       let colourStrings = [
         "red",
         "orange",
@@ -22,18 +21,124 @@
       for (let row = 9; row >= 0; row--) {
         let topV = 80 + 20 * (9 - row);
         for (let col = 0; col < 10; col++) {
+          let curButton = document.createElement("button");
+          curButton.setAttribute("class", "cell1");
+          curButton.style.top = topV.toString() + "px";
+          let leftV = 140 + 20 * col;
+          curButton.style.left = leftV.toString() + "px";
+          let curButtonID_int = row * 10 + col;
+          if (row % 2 == 1) {
+            curButtonID_int = row * 10 + (9 - col);
+          }
+          curButtonID_str = curButtonID_int.toString();
+          curButton.setAttribute("id", curButtonID_str);
           document.body.appendChild(curButton);
         }
       }
-      for (let i = 0; i < 5; i++) {
       for (let i = 0; i < 6; i++) {
         let leftV = 10 + 20 * i;
         for (let j = 1; j < 7; j++) {
           let curButton = document.createElement("button");
+          curButton.style.left = leftV.toString() + "px";
+          let topV = 60 + 20 * j;
+          curButton.style.top = topV.toString() + "px";
+          let curColourID = colourStrings[i] + j.toString();
+          curButton.setAttribute("class", curColourID);
+          curButton.setAttribute("id", curColourID);
+          document.body.appendChild(curButton);
+        }
+      }
+    }
+  </script>
+  <body onload="initCells();">
+    <button id="reset" class="reset">reset</button>
+    <button id="heart" class="heart">heart</button>
+    <button id="Update" class="Update">update</button>
+    <p>
+      Hello visitor!
+      <br />
+      Feel free to change the colour of the light next to you.
+    </p>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <p>
+      ->to change a colour, click one of the colours, and click on one of the
+      white cells.
+      <br />
+      ->to turn the lights off, click reset.
+    </p>
+    <!--imports/configuration-->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCEG_f6fzSnbx3gUDlqeJa_bwK-e4DzmrM",
+        authDomain: "dti-3007.firebaseapp.com",
+        databaseURL:
+          "https://dti-3007-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "dti-3007",
+        storageBucket: "dti-3007.appspot.com",
+        messagingSenderId: "397662113789",
+        appId: "1:397662113789:web:b5b10ceec5bf6146fbd394",
+        measurementId: "G-3RY97GMB2Z",
+      };
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      import {
+        getDatabase,
+        ref,
+        set,
+        child,
+        update,
+        remove,
+      } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+      const db = getDatabase();
+      let activeColour = [102, 178, 255];
+      let final = [[0, 0, 0]];
+      for (let i = 0; i < 99; i++) {
+        final.push([0, 0, 0]);
+      }
+      function Init() {
+        for (let i = 0; i < 100; i++) {
+          final[i] = [76, 38, 0];
+          let chosenKey = i.toString();
+          update(ref(db), {
+            [chosenKey]: final[i],
+          });
+        }
+      }
+      function updateAll() {
+        for (let i = 0; i < 100; i++) {
+          var chosenKey = i.toString();
+          update(ref(db), {
+            [chosenKey]: final[i],
+          });
+        }
+      }
+      function applyToCells(cell) {
+        let chosenKey = cell.toString();
+        update(ref(db), {
+          [chosenKey]: final[cell],
+        });
+      }
+      function whichCellClicked() {
+        for (let i = 0; i < 100; i++) {
+          let cur_id = i.toString();
+          let cur_button = document.getElementById(cur_id);
+          cur_button.onclick = function () {
+            final[i] = activeColour;
+            console.log(final[i]);
+            // applyToCells(i);
+          };
         }
       }
       function whichColourClicked() {
-        let colourStrings = ["red", "orange", "yellow", "green", "turkoise"];
         let colourStrings = [
           "red",
           "orange",
@@ -63,7 +168,7 @@
                     j++;
                   }
                   let cur_num = cur_color.substring(i, j);
-                  activeColour[cur_ind] = Number(cur_num) / 2;
+                  activeColour[cur_ind] = Math.floor(Number(cur_num) / 2);
                   console.log(i, j);
                   console.log(activeColour[cur_ind]);
                   i = j + 1;
@@ -77,10 +182,14 @@
       }
       var res = document.getElementById("reset");
       var heart = document.getElementById("heart");
+      var upd = document.getElementById("Update");
       res.onclick = function () {
         whichCellClicked();
         whichColourClicked();
         Init();
+      };
+      upd.onclick = function () {
+        updateAll();
       };
       heart.onclick = function () {
         // let listDarkRed = [
@@ -95,14 +204,13 @@
         activeColour = [102, 0, 0];
         for (var i = 0; i < listDarkRed.length; i++) {
           final[listDarkRed[i]] = activeColour;
-          applyToCells(listDarkRed[i]);
         }
         for (var i = 0; i < 100; i++) {
           if (final[i] != activeColour) {
             final[i] = backGround;
-            applyToCells(i);
           }
         }
+        updateAll();
       };
     </script>
   </body>
