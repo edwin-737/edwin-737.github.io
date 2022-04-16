@@ -168,7 +168,7 @@
                     j++;
                   }
                   let cur_num = cur_color.substring(i, j);
-                  activeColour[cur_ind] = Math.floor(Number(cur_num) / 2);
+                  activeColour[cur_ind] = Number(cur_num);
                   console.log(i, j);
                   console.log(activeColour[cur_ind]);
                   i = j + 1;
@@ -200,7 +200,7 @@
           14, 15, 23, 26, 32, 37, 41, 48, 50, 59, 60, 69, 71, 78, 82, 87, 74,
           75, 83, 86,
         ];
-        let backGround = [0, 25, 51];
+        let backGround = [0, 51, 102];
         activeColour = [102, 0, 0];
         for (var i = 0; i < listDarkRed.length; i++) {
           final[listDarkRed[i]] = activeColour;
