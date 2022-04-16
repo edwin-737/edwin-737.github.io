@@ -22,7 +22,6 @@
       for (let row = 9; row >= 0; row--) {
         let topV = 80 + 20 * (9 - row);
         for (let col = 0; col < 10; col++) {
-@@ -28,7 +35,7 @@
           document.body.appendChild(curButton);
         }
       }
@@ -31,7 +30,6 @@
         let leftV = 10 + 20 * i;
         for (let j = 1; j < 7; j++) {
           let curButton = document.createElement("button");
-@@ -122,7 +129,14 @@
         }
       }
       function whichColourClicked() {
