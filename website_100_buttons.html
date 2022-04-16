@@ -51,6 +51,8 @@
     }
   </script>
   <body onload="initCells();">
+    <button id="activeColour" class="actuveColour"></button>
+    <button id="Update" class="Update">Update</button>
     <button id="reset" class="reset">reset</button>
     <button id="heart" class="heart">heart</button>
     <p>
@@ -63,7 +65,7 @@
       ->to change a colour, click one of the colours, and click on one of the
       white cells.
       <br />
-      ->to turn the lights off, click reset.
+      ->to turn the lights back to soothing yellow, click reset.
     </p>
     <!--imports/configuration-->
     <script type="module">
@@ -105,7 +107,15 @@
       }
       function Init() {
         for (let i = 0; i < 100; i++) {
-          final[i] = [76, 38, 0];
+          final[i] = [20, 0, 0];
+          let chosenKey = i.toString();
+          update(ref(db), {
+            [chosenKey]: final[i],
+          });
+        }
+      }
+      function updateAll() {
+        for (let i = 0; i < 100; i++) {
           let chosenKey = i.toString();
           update(ref(db), {
             [chosenKey]: final[i],
@@ -124,9 +134,22 @@
           let cur_button = document.getElementById(cur_id);
           cur_button.onclick = function () {
             final[i] = activeColour;
-            applyToCells(i);
+            var curR = final[i][0] * 2;
+            var curG = final[i][1] * 2;
+            var curB = final[i][2] * 2;
+            cur_button.style.backgroundColor =
+              "rgb(" +
+              curR.toString() +
+              "," +
+              curG.toString() +
+              "," +
+              curB.toString() +
+              ")";
           };
         }
+      }
+      function increaseBorderWhenClicked(whatButton) {
+        whatButton.style.border = "1px solid, rgb(0, 0, 0)";
       }
       function whichColourClicked() {
         let colourStrings = [
@@ -137,11 +160,13 @@
           "turkoise",
           "blue",
         ];
+        var AV = document.getElementById("activeColour");
         for (let i = 0; i < colourStrings.length; i++) {
           for (let j = 1; j < 7; j++) {
             let cur_id = colourStrings[i] + j.toString();
             let cur_button = document.getElementById(cur_id);
             cur_button.onclick = function () {
+              increaseBorderWhenClicked(cur_button);
               var cur_ind = 0;
               var cur_color =
                 window.getComputedStyle(cur_button).backgroundColor;
@@ -166,12 +191,12 @@
                 }
               }
               console.log(activeColour);
+              AV.backgroundColor();
             };
           }
         }
       }
       var res = document.getElementById("reset");
-
       var heart = document.getElementById("heart");
       res.onclick = function () {
         whichCellClicked();
@@ -179,26 +204,25 @@
         Init();
       };
       heart.onclick = function () {
-        // let listDarkRed = [
-        //   12, 13, 16, 17, 21, 24, 25, 28, 30, 39, 40, 49, 51, 58, 62, 67, 73,
-        //   76, 84, 85,
-        // ];
         let listDarkRed = [
-          14, 15, 23, 26, 32, 37, 41, 48, 50, 59, 60, 69, 71, 78, 82, 87, 74,
-          75, 83, 86,
+          12, 13, 16, 17, 21, 24, 25, 28, 30, 39, 40, 49, 51, 58, 62, 67, 73,
+          76, 84, 85,
         ];
-        let backGround = [0, 25, 51];
         activeColour = [102, 0, 0];
         for (var i = 0; i < listDarkRed.length; i++) {
           final[listDarkRed[i]] = activeColour;
           applyToCells(listDarkRed[i]);
         }
         for (var i = 0; i < 100; i++) {
-          if (final[i] != activeColour) {
-            final[i] = backGround;
-            applyToCells(i);
+          if (final[i] == [102, 0, 0]) {
+            continue;
           }
+          final[i] = [0, 51, 102];
         }
+      };
+      var upd = document.getElementById("update");
+      upd.onclick = function () {
+        updateAll();
       };
     </script>
   </body>
