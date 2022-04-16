@@ -184,9 +184,9 @@
       var heart = document.getElementById("heart");
       var upd = document.getElementById("Update");
       res.onclick = function () {
+        Init();
         whichCellClicked();
         whichColourClicked();
-        Init();
       };
       upd.onclick = function () {
         updateAll();
