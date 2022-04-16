@@ -1,3 +1,23 @@
+.Update {
+  background-color: rgb(0, 255, 255);
+  width: 60px;
+  height: 30px;
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
+  position: fixed;
+  top: 280px;
+  left: 10px;
+}
+.activeColour {
+  background-color: rgb(0, 0, 0);
+  width: 60px;
+  height: 30px;
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
+  position: fixed;
+  top: 80px;
+  left: 500px;
+}
 .reset {
   background-color: rgb(0, 255, 255);
   width: 60px;
@@ -32,8 +52,8 @@
   background-color: rgb(153, 0, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(153, 0, 0);
-  padding: 1px solid, rgb(153, 0, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 100px;
   left: 10px;
@@ -42,8 +62,8 @@
   background-color: rgb(204, 0, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(204, 0, 0);
-  padding: 1px solid, rgb(204, 0, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 120px;
   left: 10px;
@@ -52,8 +72,8 @@
   background-color: rgb(255, 0, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(255, 0, 0);
-  padding: 1px solid, rgb(255, 0, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 140px;
   left: 10px;
@@ -62,8 +82,8 @@
   background-color: rgb(255, 51, 51);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(255, 51, 51);
-  padding: 1px solid, rgb(255, 51, 51);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 160px;
   left: 10px;
@@ -72,8 +92,8 @@
   background-color: rgb(255, 102, 102);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(255, 102, 102);
-  padding: 1px solid, rgb(255, 102, 102);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 180px;
   left: 10px;
@@ -82,8 +102,8 @@
   background-color: rgb(102, 51, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(102, 51, 0);
-  padding: 1px solid, rgb(102, 51, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 80px;
   left: 30px;
@@ -92,8 +112,8 @@
   background-color: rgb(153, 76, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(153, 76, 0);
-  padding: 1px solid, rgb(153, 76, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 100px;
   left: 30px;
@@ -102,8 +122,8 @@
   background-color: rgb(204, 102, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(204, 102, 0);
-  padding: 1px solid, rgb(204, 102, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 120px;
   left: 30px;
@@ -112,8 +132,8 @@
   background-color: rgb(255, 128, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(255, 128, 0);
-  padding: 1px solid, rgb(255, 128, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 140px;
   left: 30px;
@@ -122,8 +142,8 @@
   background-color: rgb(255, 153, 51);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(255, 153, 51);
-  padding: 1px solid, rgb(255, 153, 51);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 160px;
   left: 30px;
@@ -132,8 +152,8 @@
   background-color: rgb(255, 153, 51);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(255, 153, 51);
-  padding: 1px solid, rgb(255, 153, 51);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 180px;
   left: 30px;
@@ -142,8 +162,8 @@
   background-color: rgb(102, 102, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(102, 102, 0);
-  padding: 1px solid, rgb(102, 102, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 80px;
   left: 50px;
@@ -152,8 +172,8 @@
   background-color: rgb(153, 153, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(153, 153, 0);
-  padding: 1px solid, rgb(153, 153, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 100px;
   left: 50px;
@@ -162,8 +182,8 @@
   background-color: rgb(204, 204, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(204, 204, 0);
-  padding: 1px solid, rgb(204, 204, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 120px;
   left: 50px;
@@ -172,8 +192,8 @@
   background-color: rgb(255, 255, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(255, 255, 0);
-  padding: 1px solid, rgb(255, 255, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 140px;
   left: 50px;
@@ -182,8 +202,8 @@
   background-color: rgb(255, 255, 51);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(255, 255, 51);
-  padding: 1px solid, rgb(255, 255, 51);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 160px;
   left: 50px;
@@ -192,8 +212,8 @@
   background-color: rgb(255, 255, 102);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(255, 255, 102);
-  padding: 1px solid, rgb(255, 255, 102);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 180px;
   left: 50px;
@@ -202,8 +222,8 @@
   background-color: rgb(51, 102, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(51, 102, 0);
-  padding: 1px solid, rgb(51, 102, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 80px;
   left: 70px;
@@ -212,8 +232,8 @@
   background-color: rgb(76, 153, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(76, 153, 0);
-  padding: 1px solid, rgb(76, 153, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 100px;
   left: 70px;
@@ -222,8 +242,8 @@
   background-color: rgb(102, 204, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(102, 204, 0);
-  padding: 1px solid, rgb(102, 204, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 120px;
   left: 70px;
@@ -232,8 +252,8 @@
   background-color: rgb(128, 255, 0);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(128, 255, 0);
-  padding: 1px solid, rgb(128, 255, 0);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 140px;
   left: 70px;
@@ -242,8 +262,8 @@
   background-color: rgb(153, 255, 51);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(153, 255, 51);
-  padding: 1px solid, rgb(153, 255, 51);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 160px;
   left: 70px;
@@ -252,8 +272,8 @@
   background-color: rgb(153, 255, 102);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(153, 255, 102);
-  padding: 1px solid, rgb(153, 255, 102);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 180px;
   left: 70px;
@@ -262,8 +282,8 @@
   background-color: rgb(0, 102, 102);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(0, 102, 102);
-  padding: 1px solid, rgb(0, 102, 102);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 80px;
   left: 90px;
@@ -272,8 +292,8 @@
   background-color: rgb(0, 153, 153);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(0, 153, 153);
-  padding: 1px solid, rgb(0, 153, 153);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 100px;
   left: 90px;
@@ -282,8 +302,8 @@
   background-color: rgb(0, 204, 204);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(0, 204, 204);
-  padding: 1px solid, rgb(0, 204, 204);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 120px;
   left: 90px;
@@ -292,8 +312,8 @@
   background-color: rgb(0, 255, 255);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(0, 255, 255);
-  padding: 1px solid, rgb(0, 255, 255);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 140px;
   left: 90px;
@@ -302,8 +322,8 @@
   background-color: rgb(51, 255, 255);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(51, 255, 255);
-  padding: 1px solid, rgb(51, 255, 255);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 160px;
   left: 90px;
@@ -312,8 +332,8 @@
   background-color: rgb(102, 255, 255);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(102, 255, 255);
-  padding: 1px solid, rgb(102, 255, 255);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 180px;
   left: 90px;
@@ -322,8 +342,8 @@
   background-color: rgb(0, 51, 102);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(0, 51, 102);
-  padding: 1px solid, rgb(0, 51, 102);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 80px;
   left: 110px;
@@ -332,8 +352,8 @@
   background-color: rgb(0, 76, 153);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(0, 76, 153);
-  padding: 1px solid, rgb(0, 76, 153);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 100px;
   left: 110px;
@@ -342,8 +362,8 @@
   background-color: rgb(0, 102, 204);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(0, 102, 204);
-  padding: 1px solid, rgb(0, 102, 204);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 120px;
   left: 110px;
@@ -352,8 +372,8 @@
   background-color: rgb(0, 128, 255);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(0, 128, 255);
-  padding: 1px solid, rgb(0, 128, 255);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 140px;
   left: 110px;
@@ -362,8 +382,8 @@
   background-color: rgb(51, 153, 255);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(51, 153, 255);
-  padding: 1px solid, rgb(51, 153, 255);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 160px;
   left: 110px;
@@ -372,8 +392,8 @@
   background-color: rgb(102, 178, 255);
   width: 10px;
   height: 15px;
-  border: 1px solid, rgb(102, 178, 255);
-  padding: 1px solid, rgb(102, 178, 255);
+  border: 1px solid, rgb(0, 0, 0);
+  padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 180px;
   left: 110px;
