@@ -54,10 +54,16 @@
     <button id="reset" class="reset">reset</button>
     <button id="heart" class="heart">heart</button>
     <button id="Update" class="Update">update</button>
+    <button id="activeColour" class="activeColour"></button>
     <p>
       Hello visitor!
       <br />
       Feel free to change the colour of the light next to you.
+      <br />
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp active colour
     </p>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <p>
@@ -66,6 +72,7 @@
       <br />
       ->to turn the lights off, click reset.
     </p>
+
     <!--imports/configuration-->
     <script type="module">
       // Import the functions you need from the SDKs you need
@@ -99,6 +106,10 @@
         remove,
       } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
       const db = getDatabase();
+      var aV = document.getElementById("activeColour");
+      var res = document.getElementById("reset");
+      var heart = document.getElementById("heart");
+      var upd = document.getElementById("Update");
       let activeColour = [102, 178, 255];
       let final = [[0, 0, 0]];
       for (let i = 0; i < 99; i++) {
@@ -147,6 +158,7 @@
           "turkoise",
           "blue",
         ];
+
         for (let i = 0; i < colourStrings.length; i++) {
           for (let j = 1; j < 7; j++) {
             let cur_id = colourStrings[i] + j.toString();
@@ -175,14 +187,32 @@
                   cur_ind++;
                 }
               }
+              aV.style.backgroundColor =
+                "rgb(" +
+                activeColour[0].toString() +
+                "," +
+                activeColour[1].toString() +
+                "," +
+                activeColour[2].toString() +
+                ")";
               console.log(activeColour);
             };
           }
         }
       }
-      var res = document.getElementById("reset");
-      var heart = document.getElementById("heart");
-      var upd = document.getElementById("Update");
+      function mirrorDatabase() {
+        for (let i = 0; i < 100; i++) {
+          var cur_button = document.getElementById(i.toString());
+          cur_button.style.backgroundColor =
+            "rgb(" +
+            final[i][0].toString() +
+            "," +
+            final[i][1].toString() +
+            "," +
+            final[i][2].toString() +
+            ")";
+        }
+      }
       res.onclick = function () {
         Init();
         whichCellClicked();
@@ -190,6 +220,7 @@
       };
       upd.onclick = function () {
         updateAll();
+        mirrorDatabase();
       };
       heart.onclick = function () {
         // let listDarkRed = [
