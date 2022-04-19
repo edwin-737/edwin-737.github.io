@@ -145,6 +145,8 @@
           cur_button.onclick = function () {
             final[i] = activeColour;
             console.log(final[i]);
+
+            mirrorDatabase();
             // applyToCells(i);
           };
         }
@@ -215,12 +217,12 @@
       }
       res.onclick = function () {
         Init();
+        mirrorDatabase();
         whichCellClicked();
         whichColourClicked();
       };
       upd.onclick = function () {
         updateAll();
-        mirrorDatabase();
       };
       heart.onclick = function () {
         // let listDarkRed = [
