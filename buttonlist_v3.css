@@ -8,15 +8,20 @@
   top: 280px;
   left: 10px;
 }
+.activeColourText {
+  position: fixed;
+  top: 60px;
+  left: 355px;
+}
 .activeColour {
   background-color: rgb(0, 0, 0);
-  width: 60px;
+  width: 100px;
   height: 30px;
   border: 1px solid, rgb(0, 0, 0);
   padding: 1px solid, rgb(0, 0, 0);
   position: fixed;
   top: 80px;
-  left: 500px;
+  left: 350px;
 }
 .reset {
   background-color: rgb(0, 255, 255);
