@@ -7,70 +7,9 @@
     <link rel="stylesheet" href="buttonlist_v3.css" />
     <title>Read, Write, Update, Delete data firebase</title>
   </head>
-
-  <script>
-    function initCells() {
-      let colourStrings = [
-        "red",
-        "orange",
-        "yellow",
-        "green",
-        "turkoise",
-        "blue",
-      ];
-      for (let row = 9; row >= 0; row--) {
-        let topV = 80 + 20 * (9 - row);
-        for (let col = 0; col < 10; col++) {
-          let curButton = document.createElement("button");
-          curButton.setAttribute("class", "cell1");
-          curButton.style.top = topV.toString() + "px";
-          let leftV = 140 + 20 * col;
-          curButton.style.left = leftV.toString() + "px";
-          let curButtonID_int = row * 10 + col;
-          if (row % 2 == 1) {
-            curButtonID_int = row * 10 + (9 - col);
-          }
-          curButtonID_str = curButtonID_int.toString();
-          curButton.setAttribute("id", curButtonID_str);
-          document.body.appendChild(curButton);
-        }
-      }
-      for (let i = 0; i < 6; i++) {
-        let leftV = 10 + 20 * i;
-        for (let j = 1; j < 7; j++) {
-          let curButton = document.createElement("button");
-          curButton.style.left = leftV.toString() + "px";
-          let topV = 60 + 20 * j;
-          curButton.style.top = topV.toString() + "px";
-          let curColourID = colourStrings[i] + j.toString();
-          curButton.setAttribute("class", curColourID);
-          curButton.setAttribute("id", curColourID);
-          document.body.appendChild(curButton);
-        }
-      }
-    }
-  </script>
-  <body onload="initCells();">
-    <button id="reset" class="reset">reset</button>
-    <button id="heart" class="heart">heart</button>
-    <button id="Update" class="Update">update</button>
-    <p>
-      Hello visitor!
-      <br />
-      Feel free to change the colour of the light next to you.
-<!--       <br />
-      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp active colour -->
-    </p>
+  <body >
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <p>
-      ->to change a colour, click one of the colours, and click on one of the
-      white cells.
-      <br />
-      ->to turn the lights off, click reset.
-    </p>
+
 
     <!--imports/configuration-->
     <p>
