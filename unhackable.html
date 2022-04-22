@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="buttonlist_v3.css" />
+    <title>Read, Write, Update, Delete data firebase</title>
+  </head>
+
+  <script>
+    function initCells() {
+      let colourStrings = [
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "turkoise",
+        "blue",
+      ];
+      for (let row = 9; row >= 0; row--) {
+        let topV = 80 + 20 * (9 - row);
+        for (let col = 0; col < 10; col++) {
+          let curButton = document.createElement("button");
+          curButton.setAttribute("class", "cell1");
+          curButton.style.top = topV.toString() + "px";
+          let leftV = 140 + 20 * col;
+          curButton.style.left = leftV.toString() + "px";
+          let curButtonID_int = row * 10 + col;
+          if (row % 2 == 1) {
+            curButtonID_int = row * 10 + (9 - col);
+          }
+          curButtonID_str = curButtonID_int.toString();
+          curButton.setAttribute("id", curButtonID_str);
+          document.body.appendChild(curButton);
+        }
+      }
+      for (let i = 0; i < 6; i++) {
+        let leftV = 10 + 20 * i;
+        for (let j = 1; j < 7; j++) {
+          let curButton = document.createElement("button");
+          curButton.style.left = leftV.toString() + "px";
+          let topV = 60 + 20 * j;
+          curButton.style.top = topV.toString() + "px";
+          let curColourID = colourStrings[i] + j.toString();
+          curButton.setAttribute("class", curColourID);
+          curButton.setAttribute("id", curColourID);
+          document.body.appendChild(curButton);
+        }
+      }
+    }
+  </script>
+  <body onload="initCells();">
+    <button id="reset" class="reset">reset</button>
+    <button id="heart" class="heart">heart</button>
+    <button id="Update" class="Update">update</button>
+    <p>
+      Hello visitor!
+      <br />
+      Feel free to change the colour of the light next to you.
+<!--       <br />
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp active colour -->
+    </p>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <p>
+      ->to change a colour, click one of the colours, and click on one of the
+      white cells.
+      <br />
+      ->to turn the lights off, click reset.
+    </p>
+
+    <!--imports/configuration-->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCEG_f6fzSnbx3gUDlqeJa_bwK-e4DzmrM",
+        authDomain: "dti-3007.firebaseapp.com",
+        databaseURL:
+          "https://dti-3007-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "dti-3007",
+        storageBucket: "dti-3007.appspot.com",
+        messagingSenderId: "397662113789",
+        appId: "1:397662113789:web:b5b10ceec5bf6146fbd394",
+        measurementId: "G-3RY97GMB2Z",
+      };
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      import {
+        getDatabase,
+        ref,
+        set,
+        child,
+        update,
+        remove,
+      } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+      const db = getDatabase();
+      var aV = document.getElementById("activeColour");
+      var res = document.getElementById("reset");
+      var heart = document.getElementById("heart");
+      var upd = document.getElementById("Update");
+      let activeColour = [102, 178, 255];
+      let final = [[0, 0, 0]];
+      for (let i = 0; i < 99; i++) {
+        final.push([0, 0, 0]);
+      }
+      function Init() {
+        for (let i = 0; i < 100; i++) {
+          final[i] = [102, 51, 0];
+          let chosenKey = i.toString();
+          update(ref(db), {
+            [chosenKey]: final[i],
+          });
+        }
+      }
+      function updateAll() {
+        for (let i = 0; i < 100; i++) {
+          var chosenKey = i.toString();
+          update(ref(db), {
+            [chosenKey]: final[i],
+          });
+        }
+      }
+      function applyToCells(cell) {
+        let chosenKey = cell.toString();
+        update(ref(db), {
+          [chosenKey]: final[cell],
+        });
+      }
+      function whichCellClicked() {
+        for (let i = 0; i < 100; i++) {
+          let cur_id = i.toString();
+          let cur_button = document.getElementById(cur_id);
+          cur_button.onclick = function () {
+            final[i] = activeColour;
+            console.log(final[i]);
+
+            mirrorDatabase();
+            // applyToCells(i);
+          };
+        }
+      }
+      function whichColourClicked() {
+        let colourStrings = [
+          "red",
+          "orange",
+          "yellow",
+          "green",
+          "turkoise",
+          "blue",
+        ];
+
+        for (let i = 0; i < colourStrings.length; i++) {
+          for (let j = 1; j < 7; j++) {
+            let cur_id = colourStrings[i] + j.toString();
+            let cur_button = document.getElementById(cur_id);
+            cur_button.onclick = function () {
+              var cur_ind = 0;
+              var cur_color =
+                window.getComputedStyle(cur_button).backgroundColor;
+              console.log(cur_color);
+              activeColour = [0, 0, 0];
+              let tens = 0;
+              for (let i = 0; i < cur_color.length; i++) {
+                if (cur_color[i] >= "0" && cur_color[i] <= "9") {
+                  console.log("dd");
+                  let j = i;
+                  console.log(i, j);
+                  let digits = 0;
+                  while (cur_color[j] >= "0" && cur_color[j] <= "9") {
+                    j++;
+                  }
+                  let cur_num = cur_color.substring(i, j);
+                  activeColour[cur_ind] = Number(cur_num);
+                  console.log(i, j);
+                  console.log(activeColour[cur_ind]);
+                  i = j + 1;
+                  cur_ind++;
+                }
+              }
+              aV.style.backgroundColor =
+                "rgb(" +
+                activeColour[0].toString() +
+                "," +
+                activeColour[1].toString() +
+                "," +
+                activeColour[2].toString() +
+                ")";
+              console.log(activeColour);
+            };
+          }
+        }
+      }
+      function mirrorDatabase() {
+        for (let i = 0; i < 100; i++) {
+          var cur_button = document.getElementById(i.toString());
+          cur_button.style.backgroundColor =
+            "rgb(" +
+            final[i][0].toString() +
+            "," +
+            final[i][1].toString() +
+            "," +
+            final[i][2].toString() +
+            ")";
+        }
+      }
+      res.onclick = function () {
+        Init();
+        mirrorDatabase();
+        whichCellClicked();
+        whichColourClicked();
+      };
+      upd.onclick = function () {
+        updateAll();
+      };
+      heart.onclick = function () {
+        // let listDarkRed = [
+        //   12, 13, 16, 17, 21, 24, 25, 28, 30, 39, 40, 49, 51, 58, 62, 67, 73,
+        //   76, 84, 85,
+        // ];
+        let listDarkRed = [
+          14, 15, 23, 26, 32, 37, 41, 48, 50, 59, 60, 69, 71, 78, 82, 87, 74,
+          75, 83, 86,
+        ];
+        let backGround = [0, 51, 102];
+        activeColour = [102, 0, 0];
+        for (var i = 0; i < listDarkRed.length; i++) {
+          final[listDarkRed[i]] = activeColour;
+        }
+        for (var i = 0; i < 100; i++) {
+          if (final[i] != activeColour) {
+            final[i] = backGround;
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
